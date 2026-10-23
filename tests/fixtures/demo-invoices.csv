@@ -1,0 +1,3 @@
+invoice_number,customer_name,customer_email,due_date,amount_gbp
+FR-1001,Acme Workshop,billing@example.com,2026-10-01,4800.00
+FR-1002,Northstar Studio,accounts@example.com,2026-10-20,2140.00

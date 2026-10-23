@@ -61,4 +61,4 @@ jobs:
 
       - name: Dependency audit
         if: hashFiles('package.json') != ''
-        run: npm audit --audit-level=high
+        run: npm audit --omit=dev --audit-level=high

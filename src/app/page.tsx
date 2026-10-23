@@ -20,7 +20,7 @@ export default function Home() {
           <h1 className="max-w-2xl text-4xl font-semibold tracking-tight text-slate-950 sm:text-6xl">Stop losing hours to overdue invoices.</h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">FlowRecovery turns a clean invoice list into clear, explainable next actions—using rules your team can understand and control.</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a className="rounded-md bg-teal-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-800 focus:outline-2 focus:outline-offset-2 focus:outline-teal-700" href="#workflow">See the workflow</a>
+            <Link className="rounded-md bg-teal-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-800 focus:outline-2 focus:outline-offset-2 focus:outline-teal-700" href="/dashboard">Try the CSV workspace</Link>
             <a className="rounded-md border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-500 focus:outline-2 focus:outline-offset-2 focus:outline-teal-700" href="#safety">Understand the controls</a>
           </div>
         </div>
