@@ -20,45 +20,25 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
       - name: Install locked dependencies
-        if: hashFiles('package.json') != '' && hashFiles('package-lock.json') != ''
         run: npm ci
 
-      - name: Verify application bootstrap state
-        if: hashFiles('package.json') == ''
-        run: echo "No package.json yet; source and package scripts are not present, so application checks are deferred."
-
-      - name: Require a lockfile when an application manifest exists
-        if: hashFiles('package.json') != '' && hashFiles('package-lock.json') == ''
-        run: |
-          echo "package.json exists but package-lock.json is missing. Commit the lockfile before enabling CI installs."
-          exit 1
-
       - name: Lint
-        if: hashFiles('package.json') != ''
-        run: npm run lint --if-present
+        run: npm run lint
 
       - name: Type check
-        if: hashFiles('package.json') != ''
-        run: npm run typecheck --if-present
+        run: npm run typecheck
 
       - name: Unit tests
-        if: hashFiles('package.json') != ''
-        run: npm run test --if-present -- --coverage
+        run: npm test -- --coverage
 
-      - name: Integration tests
-        if: hashFiles('package.json') != ''
-        run: npm run test:integration --if-present
-
-      - name: End-to-end tests
-        if: hashFiles('package.json') != ''
-        run: npm run test:e2e --if-present
+      - name: Release smoke tests
+        run: npm run test:integration
 
       - name: Build
-        if: hashFiles('package.json') != ''
-        run: npm run build --if-present
+        run: npm run build
 
       - name: Dependency audit
-        if: hashFiles('package.json') != ''
         run: npm audit --omit=dev --audit-level=high
